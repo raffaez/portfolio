@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { VscEllipsis, VscFolder, VscJson } from "react-icons/vsc";
 import { HiChevronDown, HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { AiFillHtml5 } from "react-icons/ai";
@@ -6,45 +6,21 @@ import { FaReact } from "react-icons/fa";
 import TsIcon from "./icons/TsIcon";
 import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io";
 import { Disclosure, Transition } from "@headlessui/react";
-
-const files = [
-  {
-    name: "index.html",
-    icon: <IoLogoHtml5 />,
-    color: "text-orange-500",
-  },
-  {
-    name: "about.css",
-    icon: <IoLogoCss3 />,
-    color: "text-blue-500",
-  },
-  {
-    name: "education.ts",
-    icon: <TsIcon />,
-    color: "text-blue-500",
-  },
-  {
-    name: "skills.json",
-    icon: <VscJson />,
-    color: "text-yellow-500",
-  },
-  {
-    name: "projects.ts",
-    icon: <TsIcon />,
-    color: "text-blue-500",
-  },
-  {
-    name: "contact.tsx",
-    icon: <FaReact />,
-    color: "text-blue-500",
-  },
-];
+import { Link, useNavigate } from "react-router-dom";
+import { ImFileEmpty } from "react-icons/im";
+import { files } from "../common/files-content";
+import File from "./File";
 
 function Explorer() {
-  const path = window.location.pathname.split("/")[1];
+  const navigate = useNavigate();
+  const [path, setPath] = useState(window.location.pathname.split("/")[1]);
+
+  useEffect(() => {
+    setPath(window.location.pathname.split("/")[1]);
+  }, [navigate]);
 
   const isActive = (name: string) => {
-    return name === path;
+    return name.split(".")[0] === path;
   };
 
   return (
@@ -75,15 +51,17 @@ function Explorer() {
             >
               <Disclosure.Panel>
                 {files.map((file) => (
-                  <div
+                  <Link
+                    to={`/${file.name.split(".")[0]}`}
                     key={file.name}
-                    className={`flex flex-row items-center pl-7 py-0.5 space-x-2 cursor-pointer hover:bg-purple-450 hover:text-purple-200 ${
-                      isActive(file.name) && "bg-purple-450 text-white"
+                    className={`flex pl-7 py-0.5  ${
+                      isActive(file.name)
+                        ? "bg-purple-450 text-white"
+                        : "hover:bg-purple-450 hover:text-purple-200"
                     }`}
                   >
-                    <div className={`${file.color}`}>{file.icon}</div>
-                    <div>{file.name}</div>
-                  </div>
+                    <File fileName={file.name} />
+                  </Link>
                 ))}
               </Disclosure.Panel>
             </Transition>

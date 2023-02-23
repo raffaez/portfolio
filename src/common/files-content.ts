@@ -1,21 +1,27 @@
 
 export const files = [
   {
-    name: "index.html",
+    name: "index",
+    extension: "html",
   },
   {
-    name: "about.css",
+    name: "about",
+    extension: "css",
   },
   {
-    name: "education.ts",
+    name: "education",
+    extension: "ts",
   },
   {
-    name: "skills.json",
+    name: "skills",
+    extension: "json",
   },
   {
-    name: "projects.ts",
+    name: "projects",
+    extension: "ts",
   },
   {
-    name: "contact.tsx",
+    name: "contact",
+    extension: "tsx",
   },
 ];

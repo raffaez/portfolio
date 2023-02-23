@@ -5,6 +5,7 @@ import { AiFillHtml5 } from "react-icons/ai";
 import { FaReact } from "react-icons/fa";
 import TsIcon from "./icons/TsIcon";
 import { IoLogoHtml5, IoLogoCss3 } from "react-icons/io";
+import { Disclosure } from "@headlessui/react";
 
 const files = [
   {
@@ -52,23 +53,33 @@ function Explorer() {
         <div className="uppercase">Explorer</div>
         <VscEllipsis />
       </div>
-      <div className="flex items-center bg-purple-700">
-        <HiChevronDown className="inline mx-1" />
-        <div className="uppercase font-bold">Portfolio</div>
-      </div>
-      <div className="">
-        {files.map((file) => (
-          <div
-            key={file.name}
-            className={`flex flex-row items-center pl-6 py-0.5 space-x-2 cursor-pointer hover:bg-purple-450 hover:text-purple-200 ${
-              isActive(file.name) && "bg-purple-450 text-white"
-            }`}
-          >
-            <div className={`${file.color}`}>{file.icon}</div>
-            <div>{file.name}</div>
-          </div>
-        ))}
-      </div>
+      <Disclosure>
+        {({ open }) => (
+          <>
+            <Disclosure.Button className="flex items-center bg-purple-700">
+              <HiChevronRight
+                className={`mx-2 ${
+                  open ? "rotate-90" : "rotate-0"
+                } transform transition duration-200 ease-in-out`}
+              />
+              <div className="uppercase font-bold">Portfolio</div>
+            </Disclosure.Button>
+            <Disclosure.Panel>
+              {files.map((file) => (
+                <div
+                  key={file.name}
+                  className={`flex flex-row items-center pl-7 py-0.5 space-x-2 cursor-pointer hover:bg-purple-450 hover:text-purple-200 ${
+                    isActive(file.name) && "bg-purple-450 text-white"
+                  }`}
+                >
+                  <div className={`${file.color}`}>{file.icon}</div>
+                  <div>{file.name}</div>
+                </div>
+              ))}
+            </Disclosure.Panel>
+          </>
+        )}
+      </Disclosure>
     </div>
   );
 }

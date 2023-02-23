@@ -1,3 +1,4 @@
+import { Disclosure } from "@headlessui/react";
 import React from "react";
 import {
   VscAccount,
@@ -12,7 +13,9 @@ import {
 function Sidebar() {
   return (
     <div className="w-12 bg-purple-500 flex flex-col items-center">
-      <VscFiles className="sidebar-icon bg-purple-600 border-l-2 border-purple-400" />
+      <Disclosure.Button className="w-12">
+        <VscFiles className="sidebar-icon bg-purple-600 border-purple-400 text-white" />
+      </Disclosure.Button>
       <VscSearch className="sidebar-icon" />
       <VscSourceControl className="sidebar-icon" />
       <VscDebugAlt className="sidebar-icon" />

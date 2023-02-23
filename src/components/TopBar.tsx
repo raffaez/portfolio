@@ -21,7 +21,10 @@ function TopBar() {
       <div className="flex space-x-2 items-center basis-1/4 lg:basis-1/3">
         <SiVisualstudiocode className="text-blue-500 mx-3 w-4 h-4" />
         {navItems.map((item) => (
-          <div className="hidden lg:block rounded-md px-2 hover:bg-purple-450">
+          <div
+            key={item}
+            className="hidden lg:block rounded-md px-2 hover:bg-purple-450"
+          >
             {item}
           </div>
         ))}

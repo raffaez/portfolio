@@ -1,6 +1,7 @@
 import React from "react";
+import { IconBaseProps } from "react-icons/lib";
 
-function TsIcon() {
+function TsIcon(props: IconBaseProps) {
   return (
     <div>
       <svg

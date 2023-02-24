@@ -1,4 +1,4 @@
-import { Disclosure } from "@headlessui/react";
+import { Disclosure, Popover } from "@headlessui/react";
 import React from "react";
 import {
   VscAccount,
@@ -10,17 +10,41 @@ import {
   VscSourceControl,
 } from "react-icons/vsc";
 
+import AccountPanel from "./AccountPanel";
+
 function Sidebar() {
   return (
-    <div className="w-12 bg-purple-500 flex flex-col items-center">
+    <div className="w-12 bg-purple-500 flex flex-col items-center relative">
       <Disclosure.Button className="w-12">
-        <VscFiles className="sidebar-icon bg-purple-600 border-purple-400 text-white" />
+        {({ open }) => (
+          <VscFiles
+            className={`sidebar-icon ${
+              open &&
+              "text-white bg-purple-600 border-l-[1px] border-purple-300"
+            }`}
+          />
+        )}
       </Disclosure.Button>
       <VscSearch className="sidebar-icon" />
       <VscSourceControl className="sidebar-icon" />
       <VscDebugAlt className="sidebar-icon" />
       <VscExtensions className="sidebar-icon" />
-      <VscAccount className="sidebar-icon mt-auto" />
+      <Popover as="span" className=" mt-auto">
+        {({ open }) => (
+          <>
+            <Popover.Button className="focus:outline-none focus-visible:ring-0">
+              <VscAccount
+                className={`sidebar-icon w-12 h-12 ${open && "text-white"}`}
+              />
+            </Popover.Button>
+            <Popover.Panel>
+              <div className="absolute w-64 h-fit -right-64 bottom-14">
+                <AccountPanel />
+              </div>
+            </Popover.Panel>
+          </>
+        )}
+      </Popover>
       <VscGear className="sidebar-icon" />
     </div>
   );

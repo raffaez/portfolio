@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { SiVisualstudiocode } from "react-icons/si";
 import { BiWindows } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
+import { files } from "../common/files-content";
+import { useNavigate } from "react-router-dom";
 
 const navItems = [
   "File",
@@ -16,6 +18,17 @@ const navItems = [
 ];
 
 function TopBar() {
+  const navigate = useNavigate();
+  const [fileName, setFileName] = useState("");
+
+  useEffect(() => {
+    const path = window.location.pathname.split("/")[1];
+    const file = files.find((file) => file.name.split(".")[0] === path);
+    if (file) {
+      setFileName(`${file.name}.${file.extension}`);
+    }
+  }, [navigate]);
+
   return (
     <div className="w-screen h-7 bg-purple-700 flex items-center py-1 text-white text-sm">
       <div className="flex space-x-2 items-center basis-1/4 lg:basis-1/3">
@@ -23,7 +36,7 @@ function TopBar() {
         {navItems.map((item) => (
           <div
             key={item}
-            className="hidden lg:block rounded-md px-2 hover:bg-purple-450"
+            className="hidden lg:block rounded-md px-1.5 hover:bg-purple-450"
           >
             {item}
           </div>
@@ -31,7 +44,7 @@ function TopBar() {
       </div>
 
       <div className="flex justify-center basis-2/4 lg:basis-1/3">
-        Rafaele Souza - Visual Studio Code
+        {fileName} - Visual Studio Code
       </div>
       <div className="flex justify-end basis-1/4 lg:basis-1/3">
         <FaRegWindowMinimize className="mx-2" />

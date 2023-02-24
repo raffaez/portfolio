@@ -22,7 +22,7 @@ function Explorer() {
 
   return (
     <div className="flex flex-col h-full w-64 bg-purple-600 text-purple-300">
-      <div className="flex flex-row justify-between py-2 px-6">
+      <div className="flex flex-row items-center justify-between py-2 px-6">
         <div className="uppercase">Explorer</div>
         <VscEllipsis />
       </div>

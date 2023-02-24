@@ -6,13 +6,13 @@ import { VscJson } from "react-icons/vsc";
 import TsIcon from "./icons/TsIcon";
 
 type Props = {
-  fileName: string;
+  file: { name: string; extension: string };
   hideIcon?: boolean;
 };
 
-function File({ fileName, hideIcon = false }: Props) {
+function File({ file, hideIcon = false }: Props) {
   const getIcon = () => {
-    const type = fileName.split(".")[1];
+    const type = file.extension;
     switch (type) {
       case "html":
         return <IoLogoHtml5 className="text-orange-500" />;
@@ -32,7 +32,9 @@ function File({ fileName, hideIcon = false }: Props) {
   return (
     <div className="flex flex-row items-center space-x-2">
       {getIcon()}
-      <div>{fileName}</div>
+      <div>
+        {file.name}.{file.extension}
+      </div>
     </div>
   );
 }

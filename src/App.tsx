@@ -12,15 +12,17 @@ import Education from "./panels/Education";
 import Index from "./panels/Index";
 import Projects from "./panels/Projects";
 import Skills from "./panels/Skills";
+import Tabs from "./components/Tabs";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="h-screen w-screen flex flex-col">
         <TopBar />
-        <div className="flex flex-row flex-grow z-0 bg-purple-500">
+        <div className="w-screem flex flex-row flex-grow z-0 bg-purple-500">
           <SidePanel />
-          <div className=" w-full">
+          <div className="min-w-[calc(100vw-20rem)] max-w-[calc(100vw-3rem)] flex flex-col">
+            <Tabs />
             <Routes>
               <Route path="/index" element={<Index />} />
               <Route path="/about" element={<About />} />

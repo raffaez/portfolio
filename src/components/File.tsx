@@ -21,7 +21,7 @@ function File({ file, hideIcon = false }: Props) {
       case "ts":
         return <TsIcon className="text-blue-500" />;
       case "json":
-        return <VscJson className="text-yellow-500" />;
+        return <VscJson className="text-yellow-300" />;
       case "tsx":
         return <FaReact className="text-blue-500" />;
       default:
@@ -30,8 +30,8 @@ function File({ file, hideIcon = false }: Props) {
   };
 
   return (
-    <div className="flex flex-row items-center space-x-2">
-      {getIcon()}
+    <div className="flex flex-row items-center space-x-1">
+      {!hideIcon && getIcon()}
       <div>
         {file.name}.{file.extension}
       </div>

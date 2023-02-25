@@ -7,10 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { files } from "../common/files-content";
 import File from "./File";
+import { useOpenStore } from "../store";
+import { IFile } from "../models/IFile";
 
 function Explorer() {
   const navigate = useNavigate();
   const [path, setPath] = useState(window.location.pathname.split("/")[1]);
+  const { openFiles } = useOpenStore();
 
   useEffect(() => {
     setPath(window.location.pathname.split("/")[1]);
@@ -18,6 +21,13 @@ function Explorer() {
 
   const isActive = (name: string) => {
     return name.split(".")[0] === path;
+  };
+
+  const handleClick = (file: IFile) => {
+    if (!openFiles.find((f: { name: string }) => f.name === file.name)) {
+      useOpenStore.setState({ openFiles: [...openFiles, file] });
+    }
+    navigate(`/${file.name}`);
   };
 
   return (
@@ -70,17 +80,17 @@ function Explorer() {
                       >
                         <Disclosure.Panel>
                           {files.map((file) => (
-                            <Link
-                              to={`/${file.name.split(".")[0]}`}
+                            <div
                               key={file.name}
-                              className={`flex pl-10 py-0.5  ${
+                              onClick={() => handleClick(file)}
+                              className={`flex pl-10 py-0.5 cursor-pointer ${
                                 isActive(file.name)
                                   ? "bg-purple-450 text-white"
                                   : "hover:bg-purple-450 hover:text-purple-200"
                               }`}
                             >
                               <File file={file} />
-                            </Link>
+                            </div>
                           ))}
                         </Disclosure.Panel>
                       </Transition>

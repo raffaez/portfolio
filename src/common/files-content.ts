@@ -18,7 +18,7 @@ export const files = [
   },
   {
     name: "projects",
-    extension: "ts",
+    extension: "json",
   },
   {
     name: "contact",

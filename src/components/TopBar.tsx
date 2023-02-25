@@ -44,7 +44,7 @@ function TopBar() {
       </div>
 
       <div className="flex justify-center basis-2/4 lg:basis-1/3 text-xs">
-        {fileName} - Visual Studio Code
+        {fileName || "Rafaele Souza"} - Visual Studio Code
       </div>
       <div className="flex justify-end basis-1/4 lg:basis-1/3">
         <FaRegWindowMinimize className="mx-2" />

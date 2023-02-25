@@ -3,7 +3,7 @@ import { FaRegWindowMinimize } from "react-icons/fa";
 import { SiVisualstudiocode } from "react-icons/si";
 import { BiWindows } from "react-icons/bi";
 import { AiOutlineClose } from "react-icons/ai";
-import { files } from "../common/files-content";
+import { files } from "../../common/files-content";
 import { useNavigate } from "react-router-dom";
 
 const navItems = [

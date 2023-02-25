@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useOpenStore } from "../store";
+import { useOpenStore } from "../../store";
 import Tab from "./Tab";
 
 function Tabs() {

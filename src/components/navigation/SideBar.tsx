@@ -10,7 +10,7 @@ import {
   VscSourceControl,
 } from "react-icons/vsc";
 
-import AccountPanel from "./AccountPanel";
+import AccountPanel from "../ui/AccountPanel";
 
 function SideBar() {
   return (

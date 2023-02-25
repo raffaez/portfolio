@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useOpenStore } from "../store";
-import File from "./File";
+import { useOpenStore } from "../../store";
+import File from "../File";
 
 type Props = {
   file: { name: string; extension: string };

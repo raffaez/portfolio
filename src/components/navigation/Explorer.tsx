@@ -5,10 +5,10 @@ import { HiChevronRight } from "react-icons/hi2";
 import { VscEllipsis } from "react-icons/vsc";
 import { Link, useNavigate } from "react-router-dom";
 
-import { files } from "../common/files-content";
-import File from "./File";
-import { useOpenStore } from "../store";
-import { IFile } from "../models/IFile";
+import { files } from "../../common/files-content";
+import File from "../File";
+import { useOpenStore } from "../../store";
+import { IFile } from "../../models/IFile";
 
 function Explorer() {
   const navigate = useNavigate();

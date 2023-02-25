@@ -1,13 +1,10 @@
-import React from "react";
-import Explorer from "./Explorer";
 import { Disclosure, Transition } from "@headlessui/react";
-import { useMediaQuery } from "@react-hook/media-query";
+import React from "react";
+
+import Explorer from "./Explorer";
 import SideBar from "./SideBar";
 
 function SidePanel() {
-  const isMobile = useMediaQuery("(max-width: 767px)");
-  const defaultOpen = !isMobile;
-
   return (
     <div className="flex">
       <div className="flex border-r-[1px] border-purple-600">

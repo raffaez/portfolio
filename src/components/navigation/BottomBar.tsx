@@ -3,7 +3,7 @@ import React from "react";
 import { VscJson, VscSourceControl } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
-import AccountPanel from "./AccountPanel";
+import AccountPanel from "../ui/AccountPanel";
 
 function BottomBar() {
   return (

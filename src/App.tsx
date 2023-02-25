@@ -5,21 +5,22 @@ import { useMediaQuery } from "@react-hook/media-query";
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import BottomBar from "./components/BottomBar";
-import Empty from "./components/Empty";
-import SidePanel from "./components/SidePanel";
-import Tabs from "./components/Tabs";
-import TopBar from "./components/TopBar";
+import BottomBar from "./components/navigation/BottomBar";
+import Empty from "./components/ui/Empty";
+import TopBar from "./components/ui/TopBar";
 import About from "./panels/About";
 import Contact from "./panels/Contact";
 import Education from "./panels/Education";
 import Index from "./panels/Index";
 import Projects from "./panels/Projects";
 import Skills from "./panels/Skills";
+import SidePanel from "./components/navigation/SidePanel";
+import Tabs from "./components/navigation/Tabs";
 
 function App() {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const defaultOpen = !isMobile;
+
   return (
     <BrowserRouter>
       <div className="h-screen w-screen flex flex-col">
